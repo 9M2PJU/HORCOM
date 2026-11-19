@@ -57,6 +57,46 @@ Windows may warn about an unknown publisher the first time you start the program
 
 ### Linux
 
+#### One-Liner Install (Universal)
+
+Install or update HORCOM with a single command across all major Linux distributions (Arch Linux, Ubuntu/Debian, Fedora, openSUSE):
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/9M2PJU/HORCOM/main/install.sh | bash
+```
+
+The script automatically detects your distribution, resolves dependencies, and installs the application menu entries and icons.
+
+#### Arch Linux (AUR)
+
+HORCOM is available on the Arch User Repository (AUR) as [`horcom-git`](https://aur.archlinux.org/packages/horcom-git):
+
+```sh
+# Using yay
+yay -S horcom-git
+
+# Using paru
+paru -S horcom-git
+```
+
+#### Debian / Ubuntu (.deb)
+
+Download `horcom-*.deb` from the releases or build locally via `packaging/linux/build-packages.sh`:
+
+```sh
+sudo apt install ./horcom-*.deb
+```
+
+#### Fedora / RHEL (.rpm)
+
+Download `horcom-*.rpm` from the releases or build locally:
+
+```sh
+sudo dnf install ./horcom-*.rpm
+```
+
+#### Standalone AppImage
+
 Download `horcom-linux-x86_64.AppImage`, make it executable and start it. It runs on any current 64 bit desktop (Ubuntu 22.04 or newer, Debian 12, Fedora, Arch, openSUSE and relatives) and installs nothing into the system.
 
 ```sh

@@ -36,3 +36,35 @@ add_subdirectory(apps)
 
 enable_testing()
 add_subdirectory(tests)
+
+# ===================================================================
+# CPack Packaging Configuration (.deb, .rpm, tar.gz)
+# ===================================================================
+if(UNIX AND NOT APPLE)
+  set(CPACK_PACKAGE_NAME "horcom")
+  set(CPACK_PACKAGE_VENDOR "HORCOM Project")
+  set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Complete desktop astrology program and chart calculator")
+  set(CPACK_PACKAGE_HOMEPAGE_URL "https://github.com/horcom-rr/HORCOM")
+  set(CPACK_PACKAGE_CONTACT "Dominik Schwimmbeck <https://github.com/horcom-rr/HORCOM>")
+  set(CPACK_PACKAGE_VERSION_MAJOR 0)
+  set(CPACK_PACKAGE_VERSION_MINOR 1)
+  set(CPACK_PACKAGE_VERSION_PATCH 0)
+  set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
+  set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
+
+  # Debian (.deb)
+  set(CPACK_DEBIAN_PACKAGE_MAINTAINER "HORCOM Project <https://github.com/horcom-rr/HORCOM>")
+  set(CPACK_DEBIAN_PACKAGE_SECTION "science")
+  set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
+  set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS OFF)
+  set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6, libstdc++6, libqt6widgets6, libqt6svg6, libqt6printsupport6")
+
+  # RPM (.rpm)
+  set(CPACK_RPM_PACKAGE_LICENSE "GPL-3.0-or-later")
+  set(CPACK_RPM_PACKAGE_GROUP "Applications/Engineering")
+  set(CPACK_RPM_PACKAGE_AUTOREQ "yes")
+  set(CPACK_RPM_PACKAGE_REQUIRES "qt6-qtbase-gui, qt6-qtsvg")
+
+  include(CPack)
+endif()
+
